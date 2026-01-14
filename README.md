@@ -1,33 +1,19 @@
-# PyTorch CIFAR10 Training System
+# PyTorch CIFAR10 训练系统
+基于 PyTorch 构建的工程化 CIFAR10 图像分类训练项目，
+实现完整的模型训练、评估与实验管理流程。
 
-A clean and reproducible CIFAR10 image classification training pipeline built with PyTorch.
+## 项目特点
+- 标准化深度学习项目结构（data / models / checkpoints / logs）
+- 支持数据增强与 batch 训练（RandomCrop、RandomHorizontalFlip）
+- 集成 TensorBoard 进行训练过程可视化
+- 实现 checkpoint 与 resume 机制，支持断点恢复训练
+- 通过 argparse 支持命令行参数配置，提升实验灵活性与可复现性
+- 支持最优模型与周期性权重自动保存
 
-## Features
-- Modular project structure
-- Data augmentation
-- TensorBoard logging
-- Checkpoint & resume training
-- Command-line configuration
-- Reproducible training with random seed
-
-## Project Structure
-data/
-models/
-checkpoints/
-logs/
-train.py
-test.py
-## Requirements
-- Python >= 3.8
-- PyTorch
-- torchvision
-
-## Training
+### 训练模型
 ```bash
 python train.py --epochs 30 --batch_size 64
-## Resume Training
-```bash
-python train.py --resume
-## Evaluation
-```bash
-python test.py
+
+### **断点恢复**
+
+
