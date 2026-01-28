@@ -12,20 +12,18 @@ import numpy as np
 import torch
 
 def set_seed(seed=42):
-    random.seed(seed)                  # Python 自带随机数
-    np.random.seed(seed)               # NumPy 随机数
-    torch.manual_seed(seed)            # CPU 上的 PyTorch 随机数
-    torch.cuda.manual_seed(seed)       # 当前 GPU
-    torch.cuda.manual_seed_all(seed)   # 所有 GPU
+    random.seed(seed)                
+    np.random.seed(seed)             
+    torch.manual_seed(seed)          
+    torch.cuda.manual_seed(seed)      
+    torch.cuda.manual_seed_all(seed)   
 
-    # 让 CUDA 卷积结果可复现（可能会稍微慢一点）
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="CIFAR10 Training")  # 解CIFAR10 Training是一个命令行参数解析器，用于解析命令行参数。
-
+    parser = argparse.ArgumentParser(description="CIFAR10 Training") 
     parser.add_argument("--epochs", type=int, default=10, help="训练轮数")
     parser.add_argument("--batch_size", type=int, default=64, help="batch 大小")  # 默认值64
     parser.add_argument("--lr", type=float, default=0.01, help="学习率")
@@ -106,7 +104,7 @@ def main():
 
     # ===== 模型/损失/优化器 =====
     model = Tudui().to(device)# 模型实例化并移动到指定设备
-    criterion = nn.CrossEntropyLoss()# 损失函数实例化
+    criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
 
     best_acc = 0.0
@@ -174,3 +172,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
